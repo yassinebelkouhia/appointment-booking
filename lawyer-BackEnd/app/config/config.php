@@ -1,15 +1,15 @@
 <?php
 
-    define('DB_HOST','localhost');
-    define('DB_USER','zer0');
-    define('DB_PASS','1234');
-    define('DB_NAME','rendez-vous');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'lawyerbookings');
 
 
-    
 
-    define('APPROOT',dirname(dirname(__FILE__)));
 
-    define("URLROOT","http://localhost/brief6");
+define('APPROOT', dirname(dirname(__FILE__)));
 
-    define("SITENAME","Rendez-Vous");
+define("URLROOT", "http://localhost/Back-End");
+
+define("SITENAME", "Lawyer");

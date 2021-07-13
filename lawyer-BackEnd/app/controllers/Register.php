@@ -20,11 +20,9 @@ class Register extends Controller
         $data = json_decode(file_get_contents("php://input"));
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($ref = $this->reg->insert($data)) {
-                echo json_encode(['Ref' => $ref]);
-            }
-            else
-            {
+            if ($d = $this->reg->insert($data)) {
+                echo json_encode($d);
+            } else {
                 echo json_encode(['Ref' => "empty fields"]);
             }
         }

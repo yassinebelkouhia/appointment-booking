@@ -4,7 +4,7 @@
 class rendezVousM
 {
 
-    public $table = "rendez-v";
+    public $table = "Bookings";
     public $conn;
     public function __construct()
     {
@@ -15,7 +15,7 @@ class rendezVousM
     {
         $query = "SELECT * FROM `$this->table` WHERE reference_id =:Ref";
         $this->conn->query($query);
-        $this->conn->bind(":Ref",$data->Ref);
+        $this->conn->bind(":Ref", $data->Ref);
         $stm = $this->conn->resultSet();
 
         return $stm;
@@ -39,18 +39,18 @@ class rendezVousM
         $this->conn->bind(":R_date", $data->Date);
         // $this->conn->bind(":R_time", $data->time);
         // $this->conn->single();
-        
-     
+
+
         return $this->conn->resultSet();
     }
     public function insert($data)
     {
-        $query = "INSERT INTO `$this->table` (Date,time,reference_id,typeDeConsultaion) VALUES(:Date,:time,:reference_id,:typeDeConsultaion)";
+        $query = "INSERT INTO `$this->table` (Date,time,reference_id,bookingSubject) VALUES(:Date,:time,:reference_id,:bookingSubject)";
         $this->conn->query($query);
         $this->conn->bind(":Date", $data->Date);
         $this->conn->bind(":time", $data->time);
         $this->conn->bind(":reference_id", $data->reference_id);
-        $this->conn->bind(":typeDeConsultaion", $data->typeDeConsultaion);
+        $this->conn->bind(":bookingSubject", $data->bookingSubject);
         if ($this->conn->execute())
             return true;
         return false;
@@ -70,13 +70,13 @@ class rendezVousM
 
     public function update($data)
     {
-        $query = "UPDATE `$this->table` SET Date=:Date , time =:time, typeDeConsultaion = :typeDeConsultaion WHERE id=:id";
+        $query = "UPDATE `$this->table` SET Date=:Date , time =:time, bookingSubject = :bookingSubject WHERE id=:id";
         $this->conn->query($query);
 
         $this->conn->bind(":id", $data->id);
         $this->conn->bind(":Date", "$data->Date");
         $this->conn->bind(":time", "$data->time");
-        $this->conn->bind(":typeDeConsultaion", "$data->typeDeConsultaion");
+        $this->conn->bind(":bookingSubject", "$data->bookingSubject");
         // $this->conn->bind(":reference_id",$data->reference_id);
 
         if ($this->conn->execute())

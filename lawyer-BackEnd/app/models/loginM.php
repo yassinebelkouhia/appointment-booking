@@ -1,10 +1,11 @@
 <?php
 
 
-class loginM {
+class loginM
+{
 
-    public $table = "user";
-    public $conn ;
+    public $table = "users";
+    public $conn;
 
     public function __construct()
     {
@@ -17,19 +18,10 @@ class loginM {
         $query = "SELECT Reference FROM $this->table WHERE Reference=:Reference ";
 
         $stmt = $this->conn->query($query);
-        $this->conn->bind(":Reference",$data->ref);
+        $this->conn->bind(":Reference", $data->ref);
         $this->conn->execute();
         $row = $this->conn->rowCount();
-        
+
         return $row;
-
     }
-
-
-
-
-
 }
-
-
-?>

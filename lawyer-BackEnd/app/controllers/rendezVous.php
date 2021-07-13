@@ -16,16 +16,8 @@ class rendezVous extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = json_decode(file_get_contents("php://input"));
 
-            $headers = apache_request_headers();
-
-            $headers = $headers['authorization'] ? explode(" ", $headers['authorization']) : '';
-
-            if (count($headers) == 1) {
-                echo json_encode(["response" => "redirect"]);
-            } else {
-                if ($this->rendezV->readAll($data))
-                    echo json_encode($this->rendezV->readAll($data));
-            }
+            if ($this->rendezV->readAll($data))
+                echo json_encode($this->rendezV->readAll($data));
         }
     }
     public function read_single()

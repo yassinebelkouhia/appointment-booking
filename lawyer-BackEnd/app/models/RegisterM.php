@@ -7,7 +7,7 @@ header('Access-Control-Allow-Headers: * ');
 
 class RegisterM
 {
-    public $table = "user";
+    public $table = "users";
     public $conn;
     public function __construct()
     {
@@ -29,27 +29,23 @@ class RegisterM
     public function insert($data)
     {
 
-        if (!empty($data->FirstName) && !empty($data->LastName) && !empty($data->Age) && !empty($data->Email) && !empty($data->tel)) {
-            
-            $query = "INSERT INTO $this->table(Reference,FirstName,LastName,Age,Email,tel) VALUES(:Reference,:FirstName,:LastName,:Age,:Email,:tel)";
+        if (!empty($data->fullName)  && !empty($data->Email) && !empty($data->tel)) {
+
+            $query = "INSERT INTO $this->table(Reference,fullName,Email,tel) VALUES(:Reference,:fullName,:Email,:tel)";
             $ref = strtoupper($this->uniqidReal());
             $this->conn->query($query);
 
 
             $this->conn->bind(":Reference", $ref);
-            $this->conn->bind(":FirstName", $data->FirstName);
-            $this->conn->bind(":LastName", $data->LastName);
-            $this->conn->bind(":Age", $data->Age);
+            $this->conn->bind(":fullName", $data->fullName);
             $this->conn->bind(":Email", $data->Email);
             $this->conn->bind(":tel", $data->tel);
 
 
             if ($this->conn->execute())
-                return $ref;
+                return ["ref" => $ref, "name" => $data->fullName];
             return false;
-        }
-        else
-        {
+        } else {
             return "empty";
         }
     }
