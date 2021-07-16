@@ -5,6 +5,9 @@
 
 ## ``Technologies used:``  
 
+-RESTful APIS (Representational state transfer)
+-Vue.js ( Progressive framework for building user interfaces )
+
 
 
 
