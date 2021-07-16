@@ -3,6 +3,10 @@
 <br>
 <br>
 
+## ``Technologies used:``  
 
 
+
+
+## ``Project Overview:``
 ![Lawyer](https://user-images.githubusercontent.com/77494902/125268706-de5b5f00-e2ff-11eb-8091-5e6f1493910f.gif)
